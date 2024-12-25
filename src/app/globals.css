@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --background-image: url("../../public/bg_gran.png");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #3a5230;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background) var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+p {
+  /* color: rgb(34, 36, 33); */
+  color: rgb(255, 255, 255);
+}
+
+input {
+  color: #171717;
+}
