@@ -73,7 +73,7 @@ export default function Home() {
           <Image
             src={grangren1}
             alt="grangren1"
-            className={`absolute top-[300] left-8 transition-opacity duration-2000 ${
+            className={`absolute top-[300px] left-8 transition-opacity duration-2000 ${
               response ? "opacity-0" : "opacity-100"
             }`}
             width={270}
@@ -83,7 +83,7 @@ export default function Home() {
           <Image
             src={grangren2}
             alt="grangren2"
-            className={`absolute top-[300] right-8 transition-opacity duration-1000 ${
+            className={`absolute top-[300px] right-8 transition-opacity duration-1000 ${
               response ? "opacity-0" : "opacity-100"
             }`}
             width={270}
