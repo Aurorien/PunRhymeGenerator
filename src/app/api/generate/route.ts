@@ -30,7 +30,6 @@ export async function POST(request: Request) {
 
     const result = await model.generateContent(promtForAi);
 
-    // Extract text from the response
     const text = await result.response.text();
 
     return NextResponse.json({ text });
@@ -39,15 +38,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
 }
-
-// import { GoogleGenerativeAI } from "@google/generative-ai";
-
-// const apiKey = process.env.GOOGLE_API_KEY;
-
-// const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "");
-// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-// const prompt = "Explain how AI works";
-
-// const result = await model.generateContent(prompt);
-// console.log(result.response.text());
