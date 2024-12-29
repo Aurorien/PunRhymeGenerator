@@ -42,34 +42,35 @@ export default function Home() {
 
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="relative flex flex-col items-center align-center space-y-4 w-[500px] ml-14">
+      <div className="relative flex flex-col items-center align-center  w-[500px] ml-14">
         <div className="text-center mt-40 bg-pinegren/90 shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] rounded-lg p-2 w-[300px]">
           <h1 className="text-2xl font-bold">Ordvitsrim-generator</h1>
-          <p>Skriv föremålet för rim:</p>
+          <p className="mt-2">Skriv föremålet för rim:</p>
           <input
             value={prompt}
             onChange={handleInputChange}
             placeholder="Skriv här..."
-            className="border rounded p-2 w-full max-w-md"
+            className="mt-1 border rounded p-2 w-full max-w-md"
           />
         </div>
 
         <button
           onClick={handleGenerate}
           disabled={loading}
-          className={`z-50 px-4 py-2 bg-darkpinegren text-white rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
+          className={`mt-4 z-50 px-4 py-2 bg-darkpinegren text-white rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
             loading ? "cursor-not-allowed" : ""
           }`}
         >
           {loading ? "Genererar..." : "Generera"}
         </button>
 
+        <p
+          className={`mt-[75px] ml-2 p-2 rounded max-w-64 text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
+        >
+          {response}
+        </p>
+
         <div className="flex w-full max-w-screen-lg">
-          <p
-            className={`absolute top-[420px] left-28 ml-2 p-2 rounded w-64 text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
-          >
-            {response}
-          </p>
           <Image
             src={grangren1}
             alt="grangren1"
