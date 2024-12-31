@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="relative flex flex-col items-center align-center  w-[500px] ml-14">
+      <div className="relative flex flex-col items-center align-center  w-[500px]">
         <div className="text-center mt-40 bg-pinegren/90 shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] rounded-lg p-2 w-[300px]">
           <h1 className="text-2xl font-bold">Ordvitsrim-generator</h1>
           <p className="mt-2">Skriv föremålet för rim:</p>
@@ -65,7 +65,7 @@ export default function Home() {
         </button>
 
         <p
-          className={`mt-[75px] ml-2 p-2 rounded max-w-64 w-fit text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
+          className={`mt-[75px] p-2 rounded max-w-64 w-fit text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
         >
           {response}
         </p>
