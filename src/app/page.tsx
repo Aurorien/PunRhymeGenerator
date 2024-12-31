@@ -65,7 +65,7 @@ export default function Home() {
         </button>
 
         <p
-          className={`mt-[75px] ml-2 p-2 rounded max-w-64 text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
+          className={`mt-[75px] ml-2 p-2 rounded max-w-64 w-fit text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
         >
           {response}
         </p>
