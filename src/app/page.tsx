@@ -114,7 +114,7 @@ export default function Home() {
   return (
     <div className="flex justify-center min-h-screen">
       <div className="relative flex flex-col items-center align-center  w-[500px]">
-        <div className="absolute right-0 flex text-end font-bold text-black  bg-lightPinegren/90 shadow-[0_0_5px_3px_rgba(131,174,131,0.9)] rounded-xl">
+        <div className="absolute right-0 flex text-end font-bold text-black  bg-lightpinegren/90 shadow-[0_0_5px_3px_rgba(131,174,131,0.9)] rounded-xl">
           <div
             className="m-1 pr-2 border-r-2 border-black"
             onClick={() => handleLanguageChange(Language.Swedish)}
