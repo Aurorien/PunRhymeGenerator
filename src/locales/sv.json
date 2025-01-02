@@ -1,0 +1,7 @@
+{
+  "title": "Ordvitsrim-generator",
+  "inputLabel": "Skriv föremålet för rim:",
+  "inputPlaceholder": "Skriv här...",
+  "generateButton": "Generera",
+  "generateButtonGenerating": "Genererar..."
+}

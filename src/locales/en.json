@@ -1,0 +1,7 @@
+{
+  "title": "Pun rhyme generator",
+  "inputLabel": "Rhyme item:",
+  "inputPlaceholder": "Write here...",
+  "generateButton": "Generate",
+  "generateButtonGenerating": "Generating..."
+}

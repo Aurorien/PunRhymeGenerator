@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         pinegren: "rgb(42, 54, 42)",
         darkpinegren: "rgb(34, 36, 33)",
+        lightpinegren: "rgb(131, 174, 131)",
       },
     },
   },
