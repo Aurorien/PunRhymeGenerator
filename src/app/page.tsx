@@ -2,8 +2,6 @@
 
 import { SetStateAction, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import grangren1 from "../../public/grangren1.png";
-import grangren2 from "../../public/grangren2.png";
 
 interface LocaleFile {
   title: string;
@@ -116,13 +114,13 @@ export default function Home() {
       <div className="relative flex flex-col items-center align-center  w-[500px]">
         <div className="absolute right-0 flex text-end font-bold text-black  bg-lightpinegren/90 shadow-[0_0_5px_3px_rgba(131,174,131,0.9)] rounded-xl">
           <div
-            className="m-1 pr-2 border-r-2 border-black"
+            className="m-1 pr-2 border-r-2 border-black cursor-pointer"
             onClick={() => handleLanguageChange(Language.Swedish)}
           >
             sv
           </div>
           <div
-            className="mt-1 mr-2"
+            className="mt-1 mr-2 cursor-pointer"
             onClick={() => handleLanguageChange(Language.English)}
           >
             en
