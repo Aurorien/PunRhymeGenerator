@@ -161,7 +161,7 @@ export default function Home() {
 
             <div className="flex w-full max-w-screen-lg">
               <Image
-                src={grangren1}
+                src="/grangren1.png"
                 alt="grangren1"
                 className={`absolute top-[300px] left-8 transition-opacity duration-2000 ${
                   response ? "opacity-0" : "opacity-100"
@@ -171,7 +171,7 @@ export default function Home() {
                 layout="intrinsic"
               />
               <Image
-                src={grangren2}
+                src="/grangren2.png"
                 alt="grangren2"
                 className={`absolute top-[300px] right-8 transition-opacity duration-1000 ${
                   response ? "opacity-0" : "opacity-100"
