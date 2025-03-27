@@ -111,21 +111,21 @@ export default function Home() {
 
   return (
     <div className="flex justify-center min-h-screen">
-      <div className="relative flex flex-col items-center align-center  w-[500px]">
-        <div className="absolute right-0 flex text-end font-bold text-black  bg-lightpinegren/90 shadow-[0_0_5px_3px_rgba(131,174,131,0.9)] rounded-xl">
-          <div
-            className="m-1 pr-2 border-r-2 border-black cursor-pointer"
-            onClick={() => handleLanguageChange(Language.Swedish)}
-          >
-            sv
-          </div>
-          <div
-            className="mt-1 mr-2 cursor-pointer"
-            onClick={() => handleLanguageChange(Language.English)}
-          >
-            en
-          </div>
+      <div className="absolute right-4 top-4 flex text-end font-bold text-black  bg-lightpinegren/90 shadow-[0_0_5px_3px_rgba(131,174,131,0.9)] rounded-xl">
+        <div
+          className="m-1 pr-2 border-r-2 border-black cursor-pointer"
+          onClick={() => handleLanguageChange(Language.Swedish)}
+        >
+          sv
         </div>
+        <div
+          className="mt-1 mr-2 cursor-pointer"
+          onClick={() => handleLanguageChange(Language.English)}
+        >
+          en
+        </div>
+      </div>
+      <div className="relative flex flex-col items-center align-center  w-[500px]">
         {translations && (
           <>
             <div className="text-center mt-40 bg-pinegren/90 shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] rounded-lg p-2 w-[300px]">
