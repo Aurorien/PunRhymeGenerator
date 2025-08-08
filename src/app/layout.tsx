@@ -24,6 +24,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/bg_gran_small.png"
+          media="(max-width: 1023px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/bg_gran_medium.png"
+          media="(min-width: 1024px) and (max-width: 1919px)"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/bg_gran.png"
+          media="(min-width: 1920px)"
+        />
+        <link rel="preload" as="image" href="/grangren1.png" />
+        <link rel="preload" as="image" href="/grangren2.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
