@@ -24,28 +24,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link
           rel="preload"
           as="image"
-          href="/bg_gran_small.png"
+          href="/bg_gran_small.webp"
           media="(max-width: 1023px)"
         />
         <link
           rel="preload"
           as="image"
-          href="/bg_gran_medium.png"
+          href="/bg_gran_medium.webp"
           media="(min-width: 1024px) and (max-width: 1919px)"
         />
         <link
-          rel="preload"
+          rel="prefetch"
           as="image"
-          href="/bg_gran.png"
+          href="/bg_gran.webp"
           media="(min-width: 1920px)"
         />
-        <link rel="preload" as="image" href="/grangren1.png" />
-        <link rel="preload" as="image" href="/grangren2.png" />
-      </head>
+      </head> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
