@@ -171,7 +171,7 @@ export default function Home() {
               <Image
                 src="/grangren.webp"
                 alt="A pine branch facing left, covering a field in the middle of the page."
-                className={`absolute top-[300px] right-8 transition-opacity duration-1000 rotate-180 ${
+                className={`absolute top-[300px] right-8 transition-opacity duration-1000 scale-x-[-1] ${
                   response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
