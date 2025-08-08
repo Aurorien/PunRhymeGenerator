@@ -24,15 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <head>
+      <head>
         <link
-          rel="preload"
+          rel="prefetch"
           as="image"
           href="/bg_gran_small.webp"
           media="(max-width: 1023px)"
+          fetchPriority="high"
         />
         <link
-          rel="preload"
+          rel="prefetch"
           as="image"
           href="/bg_gran_medium.webp"
           media="(min-width: 1024px) and (max-width: 1919px)"
@@ -43,7 +44,8 @@ export default function RootLayout({
           href="/bg_gran.webp"
           media="(min-width: 1920px)"
         />
-      </head> */}
+        <link rel="prefetch" href="/grangren.webp" fetchPriority="high" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

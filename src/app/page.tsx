@@ -159,8 +159,8 @@ export default function Home() {
 
             <div className="flex w-full max-w-screen-lg">
               <Image
-                src="/grangren1.webp"
-                alt="grangren1"
+                src="/grangren.webp"
+                alt="A pine branch facing right, covering a field in the middle of the page."
                 className={`absolute top-[300px] left-8 transition-opacity duration-2000 ${
                   response ? "opacity-0" : "opacity-100"
                 }`}
@@ -169,9 +169,9 @@ export default function Home() {
                 layout="intrinsic"
               />
               <Image
-                src="/grangren2.webp"
-                alt="grangren2"
-                className={`absolute top-[300px] right-8 transition-opacity duration-1000 ${
+                src="/grangren.webp"
+                alt="A pine branch facing left, covering a field in the middle of the page."
+                className={`absolute top-[300px] right-8 transition-opacity duration-1000 rotate-180${
                   response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
