@@ -28,20 +28,14 @@ export default function RootLayout({
         <link
           rel="prefetch"
           as="image"
-          href="/bg_gran_small.webp"
+          href="/bg_gran.webp"
           media="(max-width: 1023px)"
           fetchPriority="high"
         />
         <link
           rel="prefetch"
           as="image"
-          href="/bg_gran_medium.webp"
-          media="(min-width: 1024px) and (max-width: 1919px)"
-        />
-        <link
-          rel="prefetch"
-          as="image"
-          href="/bg_gran.webp"
+          href="/bg_gran_large.webp"
           media="(min-width: 1920px)"
         />
         <link rel="prefetch" href="/grangren.webp" fetchPriority="high" />

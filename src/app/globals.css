@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --background-image: url("/bg_gran_small.webp");
+  --background-image: url("/bg_gran.webp");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,14 +36,8 @@ input {
   color: #171717;
 }
 
-@media (min-width: 1024px) {
-  :root {
-    --background-image: url("/bg_gran_medium.webp");
-  }
-}
-
 @media (min-width: 1920px) {
   :root {
-    --background-image: url("/bg_gran.webp");
+    --background-image: url("/bg_gran_large.webp");
   }
 }
