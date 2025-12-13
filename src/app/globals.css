@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-pinegren: rgb(42, 54, 42);
+  --color-darkpinegren: rgb(34, 36, 33);
+  --color-lightpinegren: rgb(131, 174, 131);
+}
 
 :root {
   --background: #ffffff;
