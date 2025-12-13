@@ -142,7 +142,7 @@ export default function Home() {
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className={`mt-4 z-50 px-4 py-2 bg-darkpinegren text-white rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
+              className={`mt-4 z-50 px-4 py-2 bg-darkpinegren rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
                 loading ? "cursor-not-allowed" : ""
               }`}
             >
@@ -152,7 +152,7 @@ export default function Home() {
             </button>
 
             <p
-              className={`mt-[75px] p-2 rounded max-w-64 w-fit text-white bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
+              className={`mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
             >
               {response}
             </p>
