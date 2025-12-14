@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
 type RequestBody = {
   text: string;
@@ -23,22 +23,24 @@ export async function POST(request: Request) {
   `;
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig: {
+    const genAI = new GoogleGenAI({ apiKey });
+
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.5-flash-lite",
+      contents: promtForAi,
+      config: {
         candidateCount: 1,
         temperature: 1.2,
       },
     });
 
-    const result = await model.generateContent(promtForAi);
-
-    const text = await result.response.text();
+    const text = result.text;
 
     return NextResponse.json({ text });
   } catch (error) {
     console.error("Error:", error);
-    return NextResponse.json({ error: error }, { status: 500 });
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
