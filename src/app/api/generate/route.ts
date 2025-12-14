@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
 type RequestBody = {
   prompt: string;
@@ -22,22 +22,24 @@ export async function POST(request: Request) {
   const promtForAi: string = `Give me one, and only one without explanations, rhyme for the item which is "${prompt}", in ${lang} in the style of a ${lang} christmas gift rhyme and also a pun (not anti-pun). It should be max 12 words and should not mention the item. The pun should, keep in context. Also it should be in a tone of kind children farytale. Also it should not mention any of the three items most closely related to the item to the item. Words and variants of them that should never be used: dold, hemlighet, jud, lovar, skärpt, annars, skylla, troll, trollen, mysterium, svag, små, far, mor, syster, bror, kusin, dig, ditt, din, strid, porr, sex. Neither any of those words in english. The rhyme have to do with ${prompt} and it is important that it rhyme in ${lang} and make it a ${lang} pun`;
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig: {
+    const genAI = new GoogleGenAI({ apiKey });
+
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.5-flash-lite",
+      contents: promtForAi,
+      config: {
         candidateCount: 1,
         temperature: 1.2,
       },
     });
 
-    const result = await model.generateContent(promtForAi);
-
-    const text = await result.response.text();
+    const text = result.text;
 
     return NextResponse.json({ text });
   } catch (error) {
     console.error("Error:", error);
-    return NextResponse.json({ error: error }, { status: 500 });
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

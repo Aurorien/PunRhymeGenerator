@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
+    "@google/genai": "^1.33.0",
     "@tailwindcss/postcss": "^4.1.18",
     "next": "^16.0.10",
     "openai": "^6.10.0",
