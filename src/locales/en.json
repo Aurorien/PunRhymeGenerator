@@ -3,5 +3,10 @@
   "inputLabel": "Rhyme item:",
   "inputPlaceholder": "Write here...",
   "generateButton": "Generate",
-  "generateButtonGenerating": "Generating..."
+  "generateButtonGenerating": "Generating...",
+  "errorDailyLimit": "The daily limit is reached. Try again tomorrow!",
+  "errorRateLimit": "Too many tries at once. Wait a minute and try again.",
+  "errorOverloaded": "The rhyme maker is busy right now. Try again in a little while.",
+  "errorNoResponse": "No rhyme came out this time. Try again or with another item.",
+  "errorGeneric": "Something went wrong. Try again."
 }

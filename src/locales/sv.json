@@ -3,5 +3,10 @@
   "inputLabel": "Skriv föremålet för rim:",
   "inputPlaceholder": "Skriv här...",
   "generateButton": "Generera",
-  "generateButtonGenerating": "Genererar..."
+  "generateButtonGenerating": "Genererar...",
+  "errorDailyLimit": "Dagens gräns är nådd. Försök igen i morgon!",
+  "errorRateLimit": "För många försök på en gång. Vänta en minut och försök igen.",
+  "errorOverloaded": "Rimmaskinen är upptagen just nu. Försök igen om en liten stund.",
+  "errorNoResponse": "Det blev inget rim den här gången. Försök igen eller med ett annat föremål.",
+  "errorGeneric": "Något gick fel. Försök igen."
 }

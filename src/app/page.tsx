@@ -2,18 +2,44 @@
 
 import { SetStateAction, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import type { ErrorCode } from "@src/lib/apiError";
 interface LocaleFile {
   title: string;
   inputLabel: string;
   inputPlaceholder: string;
   generateButton: string;
   generateButtonGenerating: string;
+  errorDailyLimit: string;
+  errorRateLimit: string;
+  errorOverloaded: string;
+  errorNoResponse: string;
+  errorGeneric: string;
 }
 
 enum Language {
   Swedish = "sv",
   English = "en",
 }
+
+const loadLocale = async (lang: Language): Promise<LocaleFile> =>
+  (await import(`../locales/${lang}.json`)).default;
+
+const errorMessage = (locale: LocaleFile, errorCode?: ErrorCode) => {
+  switch (errorCode) {
+    case "dailyLimit":
+      return locale.errorDailyLimit;
+    case "rateLimit":
+      return locale.errorRateLimit;
+    case "overloaded":
+      return locale.errorOverloaded;
+    case "noResponse":
+      return locale.errorNoResponse;
+    default:
+      return locale.errorGeneric;
+  }
+};
+
+type ApiResult = { text?: string; errorCode?: ErrorCode };
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
@@ -38,8 +64,7 @@ export default function Home() {
 
   useEffect(() => {
     const loadTranslations = async () => {
-      const data = await import(`../locales/${language}.json`);
-      setTranslations(data.default);
+      setTranslations(await loadLocale(language));
     };
     loadTranslations();
   }, [language]);
@@ -67,12 +92,16 @@ export default function Home() {
           }),
         });
 
-        const data: { text: string } = await res.json();
-        translationCache.current.set(cacheKey, data.text);
-        setResponse(data.text || "Translation failed.");
-        console.log("translationCache2", translationCache);
+        const data: ApiResult = await res.json();
+        if (res.ok && data.text) {
+          translationCache.current.set(cacheKey, data.text);
+          setResponse(data.text);
+        } else {
+          setResponse(errorMessage(await loadLocale(lang), data.errorCode));
+        }
       } catch (error) {
         console.error("Error translating response:", error);
+        setResponse(errorMessage(await loadLocale(lang)));
       }
     }
   };
@@ -91,13 +120,17 @@ export default function Home() {
         body: JSON.stringify({ prompt, language }),
       });
 
-      const data = await res.json();
-      const cacheKey = generateCacheKey(prompt, language);
-      translationCache.current.set(cacheKey, data.text);
-      newResponse = data.text || "No response received";
+      const data: ApiResult = await res.json();
+      if (res.ok && data.text) {
+        const cacheKey = generateCacheKey(prompt, language);
+        translationCache.current.set(cacheKey, data.text);
+        newResponse = data.text;
+      } else {
+        newResponse = errorMessage(await loadLocale(language), data.errorCode);
+      }
     } catch (error) {
       console.error("Error:", error);
-      newResponse = "Failed to generate response.";
+      newResponse = errorMessage(await loadLocale(language));
     }
 
     await minDelay;
