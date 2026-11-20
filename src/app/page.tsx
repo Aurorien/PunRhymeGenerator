@@ -2,7 +2,6 @@
 
 import { SetStateAction, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
 interface LocaleFile {
   title: string;
   inputLabel: string;
@@ -151,17 +150,17 @@ export default function Home() {
                 : translations.generateButton}
             </button>
 
-            <p
-              className={`mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000`}
+            <p              className={`relative z-10 mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000 select-text whitespace-pre-line`}
             >
               {response}
             </p>
+
 
             <div className="flex w-full max-w-screen-lg">
               <Image
                 src="/grangren.webp"
                 alt="A pine branch facing right, covering a field in the middle of the page."
-                className={`absolute top-[300px] left-8 transition-opacity duration-2000 ${
+                className={`absolute top-[300px] left-8 pointer-events-none transition-opacity duration-2000 ${
                   response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
@@ -171,7 +170,7 @@ export default function Home() {
               <Image
                 src="/grangren.webp"
                 alt="A pine branch facing left, covering a field in the middle of the page."
-                className={`absolute top-[300px] right-8 transition-opacity duration-1000 scale-x-[-1] ${
+                className={`absolute top-[300px] right-8 pointer-events-none transition-opacity duration-1000 scale-x-[-1] ${
                   response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
