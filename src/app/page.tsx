@@ -77,6 +77,7 @@ export default function Home() {
   };
 
   const handleGenerate = async () => {
+    if (!prompt.trim()) return;
     setLoading(true);
     try {
       const res = await fetch("/api/generate", {
@@ -127,28 +128,36 @@ export default function Home() {
       <div className="relative flex flex-col items-center align-center  w-[500px]">
         {translations && (
           <>
-            <div className="text-center mt-40 bg-pinegren/90 shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] rounded-lg p-2 w-[300px]">
-              <h1 className="text-2xl font-bold">{translations.title}</h1>
-              <p className="mt-2">{translations.inputLabel}</p>
-              <input
-                value={prompt}
-                onChange={handleInputChange}
-                placeholder={translations.inputPlaceholder}
-                className="mt-1 border rounded p-2 w-full max-w-md"
-              />
-            </div>
-
-            <button
-              onClick={handleGenerate}
-              disabled={loading}
-              className={`mt-4 z-50 px-4 py-2 bg-darkpinegren rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
-                loading ? "cursor-not-allowed" : ""
-              }`}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleGenerate();
+              }}
+              className="flex flex-col items-center"
             >
-              {loading
-                ? translations.generateButtonGenerating
-                : translations.generateButton}
-            </button>
+              <div className="text-center mt-40 bg-pinegren/90 shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] rounded-lg p-2 w-[300px]">
+                <h1 className="text-2xl font-bold">{translations.title}</h1>
+                <p className="mt-2">{translations.inputLabel}</p>
+                <input
+                  value={prompt}
+                  onChange={handleInputChange}
+                  placeholder={translations.inputPlaceholder}
+                  className="mt-1 border rounded p-2 w-full max-w-md"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`mt-4 z-50 px-4 py-2 bg-darkpinegren rounded hover:bg-darkpinegren/95 disabled:bg-gray-400 ${
+                  loading ? "cursor-not-allowed" : ""
+                }`}
+              >
+                {loading
+                  ? translations.generateButtonGenerating
+                  : translations.generateButton}
+              </button>
+            </form>
 
             <p              className={`relative z-10 mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000 select-text whitespace-pre-line`}
             >
