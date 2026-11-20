@@ -19,6 +19,7 @@ export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+  const [revealed, setRevealed] = useState(false);
 
   const [language, setLanguage] = useState<Language>(Language.Swedish);
   const [translations, setTranslations] = useState<LocaleFile | null>(null);
@@ -79,6 +80,10 @@ export default function Home() {
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
     setLoading(true);
+    setRevealed(false);
+    const minDelay = new Promise((resolve) => setTimeout(resolve, 2000));
+
+    let newResponse: string;
     try {
       const res = await fetch("/api/generate", {
         method: "POST",
@@ -89,13 +94,16 @@ export default function Home() {
       const data = await res.json();
       const cacheKey = generateCacheKey(prompt, language);
       translationCache.current.set(cacheKey, data.text);
-      setResponse(data.text || "No response received");
+      newResponse = data.text || "No response received";
     } catch (error) {
       console.error("Error:", error);
-      setResponse("Failed to generate response.");
-    } finally {
-      setLoading(false);
+      newResponse = "Failed to generate response.";
     }
+
+    await minDelay;
+    setResponse(newResponse);
+    setRevealed(true);
+    setLoading(false);
   };
 
   const handleInputChange = (e: {
@@ -159,18 +167,18 @@ export default function Home() {
               </button>
             </form>
 
-            <p              className={`relative z-10 mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000 select-text whitespace-pre-line`}
+            <p
+              className={`relative z-10 mt-[75px] p-2 rounded max-w-64 w-fit bg-pinegren shadow-[0_0_5px_3px_rgba(42,54,42,0.9)] py-2 transition-opacity duration-1000 select-text whitespace-pre-line`}
             >
               {response}
             </p>
-
 
             <div className="flex w-full max-w-screen-lg">
               <Image
                 src="/grangren.webp"
                 alt="A pine branch facing right, covering a field in the middle of the page."
-                className={`absolute top-[300px] left-8 pointer-events-none transition-opacity duration-2000 ${
-                  response ? "opacity-0" : "opacity-100"
+                className={`absolute z-20 top-[300px] left-8 pointer-events-none transition-opacity duration-2000 ${
+                  revealed && response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
                 height={270}
@@ -179,8 +187,8 @@ export default function Home() {
               <Image
                 src="/grangren.webp"
                 alt="A pine branch facing left, covering a field in the middle of the page."
-                className={`absolute top-[300px] right-8 pointer-events-none transition-opacity duration-1000 scale-x-[-1] ${
-                  response ? "opacity-0" : "opacity-100"
+                className={`absolute z-20 top-[300px] right-8 pointer-events-none transition-opacity duration-1000 scale-x-[-1] ${
+                  revealed && response ? "opacity-0" : "opacity-100"
                 }`}
                 width={270}
                 height={270}
